@@ -37,11 +37,10 @@ public with sharing class VariablesDataTypesOperators {
             return null;                            // End the code and return null
         } else{
             Integer sum = a + b;                    //Otherwise add a and b to get the sum
-            Systerm.debug (sum);                    // Print the sum to the debug log
-        }
+            System.debug (sum);                    // Print the sum to the debug log
         return sum;                                 // Replace null with the variable you used to store the result
     }
-
+ }
     /**
      * Question 2
      * Performs subtraction of two numbers.
@@ -118,7 +117,7 @@ public with sharing class VariablesDataTypesOperators {
         }else{
             result = false;            //Otherwise its false
         }
-        return remainder;              // Replace null with the variable you used to store the result
+        return result;              // Replace null with the variable you used to store the result
     }
 
     /**
@@ -227,16 +226,16 @@ public with sharing class VariablesDataTypesOperators {
      * @param minutes The number of minutes.
      * @return The number of milliseconds equivalent to the given number of minutes.
      */
-    Integer MILLISECONDS_PER_MINUTE = 60000; // Make this value a constant
+    //final Integer MILLISECONDS_PER_MINUTE = 60000; // Make this value a constant
     public static Integer convertMinutesToMilliseconds(Integer minutes) {
         if (minutes == null) {               // Good practise to check if the minutes is null
             System.debug('Minutes is null.');
             return 0;                       // End the code to avoid errors and return 0
-        }else{
+        }
+        final Integer MILLISECONDS_PER_MINUTE = 60000; // Make this value a constant
         Integer milliseconds = minutes * MILLISECONDS_PER_MINUTE; //Multiply the minutes by the constant to get the milliseconds    
         return milliseconds; // Replace null with the variable you used to store the result
         }    
-    }
 
     /**
      * Question 12
