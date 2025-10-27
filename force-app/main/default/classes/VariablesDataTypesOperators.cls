@@ -18,7 +18,7 @@
  * If statements are not specifically covered in the lesson this module, but review module 2 flow control section for an overview if needed.
  * Resources: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_if_else.htm 
  * 
- * @author Your Name
+ * @author Naveen Tariq
  */
 
 public with sharing class VariablesDataTypesOperators {
@@ -32,9 +32,15 @@ public with sharing class VariablesDataTypesOperators {
      * @return The sum of the two numbers, or null if either number is null.
      */
     public static Integer addition(Integer a, Integer b) {  
-        return null; // Replace null with the variable you used to store the result
+        if (a== null || b == null){                 // Check if either of the numbers is null
+            System.debug('Numbers are null.');      // If it is then print this message
+            return null;                            // End the code and return null
+        } else{
+            Integer sum = a + b;                    //Otherwise add a and b to get the sum
+            System.debug (sum);                    // Print the sum to the debug log
+        return sum;                                 // Replace null with the variable you used to store the result
     }
-
+ }
     /**
      * Question 2
      * Performs subtraction of two numbers.
@@ -44,8 +50,15 @@ public with sharing class VariablesDataTypesOperators {
      * @return The difference between the two numbers.
      */
     public static Integer subtraction(Integer a, Integer b) {
-        return null; // Replace null with the variable you used to store the result
+        if (a ==null || b == null){                 // Good Practise to check if either of the numbers is null
+            System.debug('Numbers are null.');    // Print the message
+            return null;                            // End the code and return null
+        } else {
+            Integer sub = a - b;                     // Otherwise substract the numbers
+            System.debug(sub);                     // Print the result to the debug log
+        return sub;                                // Replace null with the variable you used to store the result
     }
+}
 
     /**
      * Question 3
@@ -56,8 +69,15 @@ public with sharing class VariablesDataTypesOperators {
      * @return The product of the two numbers.
      */
     public static Integer multiplication(Integer a, Integer b) {
-        return null; // Replace null with the variable you used to store the result
+    if (a == null || b == null){                 // Good practise to check if either of the numbers is null
+            System.debug('Numbers are null.');
+        return null;                             // End the code to avoid errors
+    }else{
+        Integer multiply = a * b;              // Multiplay the numbers
+        System.debug(multiply);                // Print multplication
+        return multiply; // Replace null with the variable you used to store the result
     }
+}
 
     /**
      * Question 4
@@ -69,8 +89,13 @@ public with sharing class VariablesDataTypesOperators {
      * @return The quotient of the division, or 0 if the denominator is zero.
      */
     public static Double division(Double a, Double b) {
-        return null; // Replace null with the variable you used to store the result
+        if (b == 0) {                        //Check if the denominator is zero
+            return 0;                        // if it is then return 0
+    }else{
+            Double divisionResult = a / b;  // The quotient of the division,
+        return divisionResult;              // Replace null with the variable you used to store the result
     }
+}
 
     /**
      * Question 5
@@ -83,7 +108,16 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the number is even, False otherwise.
      */
     public static Boolean isEven(Integer num) {
-        return null; // Replace null with the variable you used to store the result
+        //Integer remainder = num / 2;    //Check if the number is even or odd.If you divde a nuber by 2 and the remainder is 0 then the number is even.
+        //Another method; Math.mod (x,y) it divides variable x by y and gives the remainder
+        Integer remainder = Math.mod(num, 2);
+        Boolean result;                 //Check true or false
+        if (remainder == 0) {           // if its 0 its even then return true
+            result = true;
+        }else{
+            result = false;            //Otherwise its false
+        }
+        return result;              // Replace null with the variable you used to store the result
     }
 
     /**
@@ -94,7 +128,16 @@ public with sharing class VariablesDataTypesOperators {
      * @return true if the number is positive, false otherwise.
      */
     public static Boolean isPositive(Integer num) {
-        return null; // Replace null with the variable you used to store the result
+        if (num == null) {                  // Step 1: First check if the number is not null to avoid errors
+        System.debug('Number is null.');
+    }
+        Boolean result;                     //Bollean to checkif the statement is true or false
+        if ( num > 0){                      // Check if number is greater than 0
+            result = true;                  //Then the number is positive so return true
+        }else{                              //Otherwise its negative
+            result = false; 
+        }
+        return result;                      // Replace null with the variable you used to store the result
     }
 
     /**
@@ -106,7 +149,9 @@ public with sharing class VariablesDataTypesOperators {
      * @return The concatenated string.
      */
     public static String concatenateStrings(String str1, String str2) {
-        return null; // Replace null with the variable you used to store the result
+        String concatenatedString = str1 + str2;    //Concatenat/ combine str1 and str2 to remove space in between them
+        System.debug(concatenatedString);
+        return concatenatedString;                  // Replace null with the variable you used to store the result
     }
 
 	/**
@@ -121,7 +166,9 @@ public with sharing class VariablesDataTypesOperators {
 	 * @return The complete sentence as a single String.
 	 */
 	public static String createSentence(String noun, String verb, String endingPunctuation) {
-		return null; // Replace null with the variable you used to store the result
+		String sentence = 'The ' + noun + ' is ' + verb + endingPunctuation; //Form a sentence by concatenating all the variables 
+        System.debug('Sentence:' + sentence);
+        return sentence;                                                  // Replace null with the variable you used to store the result
 	}
 
     /**
@@ -134,7 +181,17 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the date is in the past, False otherwise.
      */
     public static Boolean isDateInPast(Date dt) {
-        return null; // Replace null with the variable you used to store the result
+        Date todayDate = Date.today();      //Fetch today's date
+        Boolean dateInPast;                 //Declare a Boolean variable to check if the date is in the past
+        if (dt == null) {                   // Good practise to check if the date is null
+            System.debug('Date is null.');  // if null print the message
+            return false;                   // End the code to avoid errors
+        }else if (dt <todayDate){           // if the date is less than today's date then its in the past
+            dateInPast = true;                      
+        }else{                              //otherwise it is not in the past
+            dateInPast = false; 
+        }
+        return dateInPast;                  // Replace null with the variable you used to store the result
     }
 
     /**
@@ -147,7 +204,17 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the date is today or in the future, False otherwise.
      */
     public static Boolean isDateTodayOrFuture(Date dt) {
-        return null; // Replace null with the variable you used to store the result
+         Date todayDate = Date.today();     //Fetch today's date
+        Boolean dateInFutureOrToday;        //Declare a Boolean variable to check if the date is infuture or today
+        if (dt == null) {                   // Good practise to check if the date is null
+            System.debug('Date is null.');  // if null print the message
+            return false;                   // End the code to avoid errors
+        }else if (dt >= todayDate){         // if the date is equalo or greater thab today's date then its in future or today
+            dateInFutureOrToday = true;                      
+        }else{                              //otherwise it is not in future or today
+            dateInFutureOrToday = false; 
+        }
+        return dateInFutureOrToday;         // Replace null with the variable you used to store the result
     }
 
     /**
@@ -159,11 +226,16 @@ public with sharing class VariablesDataTypesOperators {
      * @param minutes The number of minutes.
      * @return The number of milliseconds equivalent to the given number of minutes.
      */
-    Integer MILLISECONDS_PER_MINUTE = null; // Make this value a constant
+    //final Integer MILLISECONDS_PER_MINUTE = 60000; // Make this value a constant
     public static Integer convertMinutesToMilliseconds(Integer minutes) {
-        Integer milliseconds;
-        return null; // Replace null with the variable you used to store the result
-    }    
+        if (minutes == null) {               // Good practise to check if the minutes is null
+            System.debug('Minutes is null.');
+            return 0;                       // End the code to avoid errors and return 0
+        }
+        final Integer MILLISECONDS_PER_MINUTE = 60000; // Make this value a constant
+        Integer milliseconds = minutes * MILLISECONDS_PER_MINUTE; //Multiply the minutes by the constant to get the milliseconds    
+        return milliseconds; // Replace null with the variable you used to store the result
+        }    
 
     /**
      * Question 12
@@ -176,8 +248,14 @@ public with sharing class VariablesDataTypesOperators {
      * @return The average of the three numbers.
      */
     public static Double averageOfThreeNumbers(Integer a, Integer b, Integer c) {
-        return null; // Replace null with the variable you used to store the result
+        if (a == null || b == null || c == null) { // Good practise to check if the numbers are null
+            System.debug(' Numbers are null.');
+            return 0;                       // End the code to avoid errors and return 0
+        }else{
+            Double average = (a + b + c ) / (3);
+        return average; // Replace null with the variable you used to store the result
     }
+}
 
     /**
      * Question 13
@@ -191,10 +269,10 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Integer adjustOrderOfOperations1(Integer a, Integer b, Integer c) {
         // Add parentheses around the addition operation so that it is performed before multiplication
-        Integer result = a + b * c;
+        Integer result = (a + b) * c;
 
         // Return the result
-        return null; // Replace null with the variable you used to store the result
+        return result; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -206,8 +284,8 @@ public with sharing class VariablesDataTypesOperators {
         // Add parentheses in the below expression to change the result.
         // The result of the expression as it is right now is 43. 
         // You should add parentheses so that the result of the expression becomes 8.
-        Integer answer = 48 - 15 + 5 * 2;
-        return null; // Replace null with the variable you used to store the result
+        Integer answer = 48 - (15 + 5)* 2;
+        return answer; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -226,9 +304,9 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Double complexOrderOfOperations(Integer a, Integer b, Integer c, Integer d, Integer e) {
         // Add parentheses around the multiplication and subtraction operations so that they are performed before division and addition
-        Double result = a * b - c / (Double) d + e;
+        Double result = (a * b - c) / (Double) d + e; // I dont understand this Double here and how to check this in Execute Annonymous Window?
 
-        return null; // Replace null with the variable you used to store the result
+        return result; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -239,14 +317,19 @@ public with sharing class VariablesDataTypesOperators {
      * @return The temperature in Celsius equivalent to the given Fahrenheit temperature.
      */
     public static Double convertFahrenheitToCelsius(Double fahrenheit) {
-        final Double SUBTRACT_FACTOR = 32.0;
+        final Double SUBTRACT_FACTOR = 32.0;            //What is final?
         final Double MULTIPLY_FACTOR = 5.0;
         final Double DIVIDE_FACTOR = 9.0;
+        if (fahrenheit == null) {               // Good practise to check if the numbers are null
+            System.debug('Fahrenheit is null.'); 
+           return null;
+        }else{
+        Double celsius = ((fahrenheit - SUBTRACT_FACTOR) * MULTIPLY_FACTOR / DIVIDE_FACTOR);
     
-        return null; // Replace null with the variable you used to store the result
+        return celsius; // Replace null with the variable you used to store the result
+        }
     }
 
-    
 
     /**
      * Question 17
@@ -260,10 +343,15 @@ public with sharing class VariablesDataTypesOperators {
     public static Integer performDivisionAndCast(Double a, Double b) {
         // Perform the division and cast (round down) off the result.
         Double divisionResult = null;
-
+         if (b == null) {                       // Check if the b is null
+        System.debug('Denominator is null');
+        return null;  
+        }                          // Return null if division is not possibl
         // Write the code for type casting the divisionResult to an Integer
+        divisionResult = a / b;
         Integer roundedResult = null;
-        return null; // Replace null with the variable you used to store the result
+        roundedResult = (Integer) divisionResult;
+        return roundedResult; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -277,7 +365,12 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Decimal calculateWeeklyPaycheck(Decimal hourlyRate, Double numberOfHours) {
         // Calculate the weekly paycheck using the formula: rate multiplied by hours
-        return null; // Replace null with the variable you used to store the result
+        if (hourlyRate == null || numberOfHours == null) {       // Good practise to check if the numbers are null
+            System.debug('Numbers are null.');
+            return null;                                        // End the code to avoid errors and return null
+         }                                            
+        Decimal weeklyPaycheck = hourlyRate  * numberOfHours;   // Otherwise Calculate the weekly paycheck using the formula: rate multiplied by hours
+        return weeklyPaycheck;                                 // Replace null with the variable you used to store the result
     }
 
     /**
@@ -291,13 +384,19 @@ public with sharing class VariablesDataTypesOperators {
      * @return A Decimal representing the monthly paycheck.
      */
     public static Decimal calculateMonthlyPaycheck(Decimal hourlyRate, Double numberOfHours) {
-        return null; // Replace null with the variable you used to store the result
+        if (hourlyRate == null || numberOfHours == null) {           // Good practise to check if the numbers are null
+            System.debug('Numbers are null.');
+            return null;                                          // End the code to avoid errors and return null
+         }                                           
+        Decimal weeklyPaycheck = hourlyRate  * numberOfHours;    //First  Calculate the weekly paycheck using the formula: rate multiplied by hours 
+        Decimal monthlyPaycheck = weeklyPaycheck * 4;           // Now multiply the weekly paycheck by 4 to get the monthly paycheck
+        return monthlyPaycheck;      // Replace null with the variable you used to store the result
     }
 
     /**
      * Question 20
      * Calculates the total cost based on price per unit, number of units, and a sales tax rate.
-     * Total cost is calculated by the formula: (pricePerUnit * numberOfUnits) * (1 + salesTaxRate).
+     * Total cost is calculat(pricePerUnit * numberOfUnits) * (1 + salesTaxRate).ed by the formula: 
      * Example: calculateTotalCost(1.0, 2, 0.05) should return 2.1
      * @param pricePerUnit The price per unit of the item.
      * @param numberOfUnits The number of units purchased.
@@ -305,6 +404,15 @@ public with sharing class VariablesDataTypesOperators {
      * @return The total cost after applying the sales tax.
      */
     public static Decimal calculateTotalCost(Decimal pricePerUnit, Integer numberOfUnits, Decimal salesTaxRate) {
-        return null; // Replace null with the variable you used to store the result
+        
+        if (pricePerUnit == null || numberOfUnits == null || salesTaxRate == null) {    // Good practise to check if the numbers are null
+            System.debug('Numbers are null.');
+            return null;                                                                // End the code to avoid errors and return null
+            }
+        Decimal totalCost = (pricePerUnit * numberOfUnits) * (1 + salesTaxRate);  
+             // Calculate the total cost using the formula
+        return totalCost; // Replace null with the variable you used to store the result
     }
 }
+
+
