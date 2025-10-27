@@ -108,9 +108,9 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the number is even, False otherwise.
      */
     public static Boolean isEven(Integer num) {
-        Integer remainder = num / 2;    //Check if the number is even or odd.If you divde a nuber by 2 and the remainder is 0 then the number is even.
+        //Integer remainder = num / 2;    //Check if the number is even or odd.If you divde a nuber by 2 and the remainder is 0 then the number is even.
         //Another method; Math.mod (x,y) it divides variable x by y and gives the remainder
-        //Integer remainder = Math.mod(num, 2);
+        Integer remainder = Math.mod(num, 2);
         Boolean result;                 //Check true or false
         if (remainder == 0) {           // if its 0 its even then return true
             result = true;
@@ -166,7 +166,7 @@ public with sharing class VariablesDataTypesOperators {
 	 * @return The complete sentence as a single String.
 	 */
 	public static String createSentence(String noun, String verb, String endingPunctuation) {
-		String sentence = 'The' + noun + 'is' + verb + endingPunctuation; //Form a sentence by concatenating all the variables 
+		String sentence = 'The ' + noun + 'is ' + verb + endingPunctuation; //Form a sentence by concatenating all the variables 
         System.debug('Sentence:' + sentence);
         return sentence;                                                  // Replace null with the variable you used to store the result
 	}
