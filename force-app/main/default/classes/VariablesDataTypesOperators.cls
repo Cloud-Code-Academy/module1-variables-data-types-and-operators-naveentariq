@@ -166,7 +166,7 @@ public with sharing class VariablesDataTypesOperators {
 	 * @return The complete sentence as a single String.
 	 */
 	public static String createSentence(String noun, String verb, String endingPunctuation) {
-		String sentence = 'The ' + noun + 'is ' + verb + endingPunctuation; //Form a sentence by concatenating all the variables 
+		String sentence = 'The ' + noun + ' is ' + verb + endingPunctuation; //Form a sentence by concatenating all the variables 
         System.debug('Sentence:' + sentence);
         return sentence;                                                  // Replace null with the variable you used to store the result
 	}
